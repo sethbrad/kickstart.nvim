@@ -1,0 +1,15 @@
+going to look into using kickstart, it seems pretty nice as a base
+
+should fork, migrate this repo to the fork, fix install/work laptop packages, test on my home PC, eval nvchad
+
+and keep using git bare! perhaps idk don't I just need the nvim directory?
+
+there are some interesting packages from the old old config... mini.nvim might do a lot of that though
+
+perhaps kickstart is overlooking some mini modules that could be used
+
+and use copilot!!! or jetbrians shiiiiii
+
+maybe capture stuff from home dir
+
+what about a nice shell prompt?

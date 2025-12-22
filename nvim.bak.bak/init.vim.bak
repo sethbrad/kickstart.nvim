@@ -1,0 +1,197 @@
+""" GENERAL SETTINGS
+"""
+set autochdir
+set mouse=a
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set smarttab
+set expandtab
+
+set smartcase
+set ignorecase
+set incsearch
+
+set smartindent
+set textwidth=80
+set wrap linebreak
+set scrolloff=10
+
+set number
+set guifont=FiraCode\ NF:h11
+
+""" VIM PLUG
+"""
+call plug#begin()
+
+Plug 'itchyny/lightline.vim'
+Plug 'morhetz/gruvbox'
+Plug 'tomasr/molokai'
+
+Plug 'glepnir/dashboard-nvim'
+Plug 'ahmedkhalf/project.nvim'
+
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'akinsho/toggleterm.nvim', {'tag': 'v1.*'}
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'jiangmiao/auto-pairs'
+" Plug '907th/vim-auto-save'
+
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+
+call plug#end()
+
+colorscheme molokai
+let g:lightline = { 'colorscheme': 'molokai' }
+
+
+""" KEYBINDS
+"""
+let mapleader = ' '
+
+" quick config edit and source it
+nnoremap <Leader>ec <cmd>edit $HOME/AppData/Local/nvim/init.vim<cr>
+nnoremap <Leader>sc <cmd>source $HOME/AppData/Local/nvim/init.vim<cr>
+
+" nvim-tree
+nnoremap <C-t> <cmd>NvimTreeToggle<cr>
+
+" saving
+nnoremap <C-s> <cmd>w<cr>
+inoremap <C-s> <Esc><cmd>w<cr>
+" let g:auto_save = 1
+" let g:auto_save_silent = 1
+
+" terminal
+tnoremap <Esc> <C-\><C-n>
+nnoremap <C-x> <cmd>ToggleTerm<cr>
+
+autocmd TermOpen * startinsert
+
+" set shell=\"C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"\ -f
+
+" telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fp <cmd>Telescope projects<cr>
+
+" split navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+""" LUA STUFF
+"""
+lua << EOF
+
+require('telescope').setup{ 
+    defaults = { 
+        file_ignore_patterns = {'node_modules', '.git', '.idea'} 
+    } 
+}
+require('telescope').load_extension('projects')
+require('toggleterm').setup{}
+require('gitsigns').setup{}
+require('project_nvim').setup {}
+require('nvim-web-devicons').setup{}
+require('nvim-tree').setup{}
+
+-- dashboard
+local db = require('dashboard')
+
+db.custom_header = {
+ '                                                       ',
+ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+ '                                                       ',
+ '                                                       '
+}
+
+db.custom_center = {
+    {
+        desc = 'Find a project          ',
+        shortcut = 'SPC f p'
+    },
+    {
+        desc = 'Edit my config          ',
+        shortcut = 'SPC e c'
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- db.custom_header = {
+--     \'',
+--     \'    ⢰⣧⣼⣯⠄⣸⣠⣶⣶⣦⣾⠄⠄⠄⠄⡀⠄⢀⣿⣿⠄⠄⠄⢸⡇⠄⠄ ',
+--     \'    ⣾⣿⠿⠿⠶⠿⢿⣿⣿⣿⣿⣦⣤⣄⢀⡅⢠⣾⣛⡉⠄⠄⠄⠸⢀⣿⠄ ',
+--     \'   ⢀⡋⣡⣴⣶⣶⡀⠄⠄⠙⢿⣿⣿⣿⣿⣿⣴⣿⣿⣿⢃⣤⣄⣀⣥⣿⣿⠄ ',
+--     \'   ⢸⣇⠻⣿⣿⣿⣧⣀⢀⣠⡌⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⣿⣿⣿⠄ ',
+--     \'  ⢀⢸⣿⣷⣤⣤⣤⣬⣙⣛⢿⣿⣿⣿⣿⣿⣿⡿⣿⣿⡍⠄⠄⢀⣤⣄⠉⠋⣰ ',
+--     \'  ⣼⣖⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⢇⣿⣿⡷⠶⠶⢿⣿⣿⠇⢀⣤ ',
+--     \' ⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣽⣿⣿⣿⡇⣿⣿⣿⣿⣿⣿⣷⣶⣥⣴⣿⡗ ',
+--     \' ⢀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟  ',
+--     \' ⢸⣿⣦⣌⣛⣻⣿⣿⣧⠙⠛⠛⡭⠅⠒⠦⠭⣭⡻⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃  ',
+--     \' ⠘⣿⣿⣿⣿⣿⣿⣿⣿⡆⠄⠄⠄⠄⠄⠄⠄⠄⠹⠈⢋⣽⣿⣿⣿⣿⣵⣾⠃  ',
+--     \'  ⠘⣿⣿⣿⣿⣿⣿⣿⣿⠄⣴⣿⣶⣄⠄⣴⣶⠄⢀⣾⣿⣿⣿⣿⣿⣿⠃   ',
+--     \'   ⠈⠻⣿⣿⣿⣿⣿⣿⡄⢻⣿⣿⣿⠄⣿⣿⡀⣾⣿⣿⣿⣿⣛⠛⠁    ',
+--     \'     ⠈⠛⢿⣿⣿⣿⠁⠞⢿⣿⣿⡄⢿⣿⡇⣸⣿⣿⠿⠛⠁      ',
+--     \'        ⠉⠻⣿⣿⣾⣦⡙⠻⣷⣾⣿⠃⠿⠋⠁     ⢀⣠⣴ ',
+--     \' ⣿⣿⣿⣶⣶⣮⣥⣒⠲⢮⣝⡿⣿⣿⡆⣿⡿⠃⠄⠄⠄⠄⠄⠄⠄⣠⣴⣿⣿⣿ ',
+--     \''
+-- }
+
+EOF
