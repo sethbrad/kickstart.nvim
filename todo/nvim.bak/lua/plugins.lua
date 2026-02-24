@@ -7,6 +7,7 @@ vim.call('plug#begin')
 
 -- is this redundant because of mini.nvim?
 Plug 'RRethy/nvim-base16'
+
 Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 
@@ -17,7 +18,9 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 
-Plug ('neoclide/coc.nvim', { branch = 'release' })
+-- what's my terminal solution?
+
+-- remember there was a cool git plugin video I watched, the successor to vinegar
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -25,27 +28,22 @@ Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-ui-select.nvim'
 
 Plug 'jiangmiao/auto-pairs'
-Plug 'easymotion/vim-easymotion'
 Plug 'alvan/vim-closetag'
 
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter'
 
--- Plug 'ThePrimeagen/vim-be-good'
-
--- Plug 'RishabhRD/popfix'
--- Plug 'RishabhRD/nvim-cheat.sh'
 Plug 'folke/which-key.nvim'
-
--- Plug 'hkupty/iron.nvim'
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'mboughaba/i3config.vim'
 
--- diy plugin playground
--- Plug 'C:/Users/zvm5w1b/repos/MakeCharBlob'
--- expand on this
+-- harvested
+
+-- Plug 'kyazdani42/nvim-tree.lua'
+-- Plug 'akinsho/toggleterm.nvim'
+-- Plug '907th/vim-auto-save'
 
 vim.call('plug#end')
 

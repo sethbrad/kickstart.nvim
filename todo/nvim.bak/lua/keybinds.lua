@@ -41,9 +41,6 @@ map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', options)
 map('n', '<leader>fp', '<cmd>Telescope projects<cr>', options)
 map('n', '<leader>ft', '<cmd>Telescope file_browser<cr>', options)
 
--- cheatsheet
--- map('n', '<leader>cs', '<cmd>Cheat<cr>', options)
-
 -- split navigation
 map('n', '<C-h>', '<C-w>h', options)
 map('n', '<C-j>', '<C-w>j', options)
